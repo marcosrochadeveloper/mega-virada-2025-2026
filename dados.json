@@ -1,0 +1,66 @@
+[
+{
+    "nome": "Anderson",
+    "imagem": "anderson.jfif",
+    "jogos": [
+      [7, 12, 14, 35, 42, 58],
+      [2, 9, 25, 32, 39, 48]
+    ]
+},
+
+{
+    "nome": "Aurélio",
+    "imagem": "aurelio.jfif",
+    "jogos": [
+      [7, 10, 13, 32, 33, 54],
+      [14, 17, 20, 29, 38, 45]
+    ]
+},
+
+{
+    "nome": "Betina",
+    "imagem": "betina.jfif",
+    "jogos": [
+      [7, 10, 14, 21, 47, 49],
+      [12, 28, 31, 36, 39, 43]
+    ]
+},
+
+{
+    "nome": "Dadá",
+    "imagem": "dada.jfif",
+    "jogos": [
+      [5, 12, 13, 24, 44, 45],
+      [7, 15, 33, 34, 45, 60]
+    ]
+},
+
+{
+    "nome": "Elaine",
+    "imagem": "elaine.jfif",
+    "jogos": [
+      [7, 13, 23, 28, 39, 60],
+      [11, 25, 28, 39, 44, 59]
+    ]
+},
+
+{
+    "nome": "Gordo",
+    "imagem": "gordo.jfif",
+    "jogos": [
+      [5, 24, 32, 41, 48, 59],
+      [4, 10, 24, 29, 35, 56]
+    ]
+},
+  
+{
+    "nome": "Marcos",
+    "imagem": "marcos.jfif",
+    "jogos": [
+      [8, 13, 24, 27, 40, 47],
+      [18, 19, 22, 36, 43, 45]
+    ]
+}
+
+
+]

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogos do Grupo</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1d2671, #c33764);
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 40px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* HEADER DO CARD */
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .nome {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .ver-jogo {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .ver-jogo:hover {
+      opacity: 0.9;
+    }
+
+    .jogo {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .jogo span {
+      font-weight: 600;
+      color: #555;
+    }
+
+    .numeros {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .numero {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .modal img {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      background: #fff;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    @media (max-width: 480px) {
+      .jogo {
+        grid-template-columns: 1fr;
+      }
+
+      .jogo span {
+        text-align: center;
+      }
+
+      .numeros {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Jogos do Grupo 🎲</h1>
+
+<div class="container" id="container"></div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <img id="modalImg" alt="Bilhete do jogo">
+</div>
+
+<script>
+  fetch("./dados.json")
+    .then(res => res.json())
+    .then(dados => render(dados));
+
+  const container = document.getElementById("container");
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modalImg");
+
+  function render(dados) {
+    container.innerHTML = "";
+
+    dados.forEach(pessoa => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      // Header (nome + botão)
+      const header = document.createElement("div");
+      header.className = "card-header";
+
+      header.innerHTML = `
+        <div class="nome">${pessoa.nome}</div>
+        <button class="ver-jogo">Ver Jogo</button>
+      `;
+
+      header.querySelector(".ver-jogo").onclick = () => {
+        modalImg.src = `imagens/${pessoa.imagem}`;
+        modal.classList.add("active");
+      };
+
+      card.appendChild(header);
+
+      // Jogos
+      pessoa.jogos.forEach((jogo, index) => {
+        const jogoDiv = document.createElement("div");
+        jogoDiv.className = "jogo";
+
+        jogoDiv.innerHTML = `
+          <span>Jogo ${index + 1}</span>
+          <div class="numeros">
+            ${jogo.map(n => `
+              <div class="numero">${String(n).padStart(2, "0")}</div>
+            `).join("")}
+          </div>
+        `;
+
+        card.appendChild(jogoDiv);
+      });
+
+      container.appendChild(card);
+    });
+  }
+
+  // Fechar modal clicando fora da imagem
+  modal.onclick = () => {
+    modal.classList.remove("active");
+    modalImg.src = "";
+  };
+</script>
+
+</body>
+</html>
