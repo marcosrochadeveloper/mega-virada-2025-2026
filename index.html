@@ -1,179 +1,183 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Jogos do Grupo</title>
+<meta charset="UTF-8">
+<title>Jogos do Grupo</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
 
-    body {
-      margin: 0;
-      padding: 40px 20px;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #1d2671, #c33764);
-    }
+body {
+  margin: 0;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1d2671, #c33764);
+}
 
-    h1 {
-      text-align: center;
-      color: #fff;
-      margin-bottom: 10px;
-    }
+h1 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 10px;
+}
 
-    .acoes {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+.acoes {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    .btn {
-      background: linear-gradient(135deg, #f39c12, #e67e22);
-      color: #fff;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 22px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
+.btn {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 22px;
+  font-weight: 600;
+  cursor: pointer;
+}
 
-    .btn:hover {
-      opacity: 0.9;
-    }
+/* PAINEL */
+.painel-numeros {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
 
-    /* PAINEL */
-    .painel-numeros {
-      max-width: 1200px;
-      margin: 0 auto 40px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
+.painel-numeros .numero {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #eee;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .painel-numeros .numero {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: #eee;
-      color: #333;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      cursor: pointer;
-    }
+/* CONTAINER */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
 
-    /* CARDS */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-    }
+.card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-    .card {
-      background: #fff;
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.nome {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
 
-    .nome {
-      font-size: 1.3rem;
-      font-weight: 600;
-    }
+.ver-jogo {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+}
 
-    .ver-jogo {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
+.jogo {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  align-items: center;
+}
 
-    .jogo {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      align-items: center;
-      gap: 16px;
-    }
+.acertos-jogo {
+  color: #27ae60;
+  font-weight: bold;
+  margin-left: 6px;
+}
 
-    .acertos-jogo {
-      color: #27ae60;
-      font-weight: bold;
-      margin-left: 6px;
-    }
+.numeros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
-    .numeros {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+.numero {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
 
-    .numero {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
+.numero.ativo {
+  background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
+}
 
-    .numero.ativo {
-      background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
-    }
+/* MODAIS */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
 
-    /* MODAL */
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 1000;
-    }
+.modal.active {
+  display: flex;
+}
 
-    .modal.active {
-      display: flex;
-    }
+/* MODAL IMAGEM */
+.modal img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 12px;
+  background: #fff;
+}
 
-    .modal-box {
-      background: #fff;
-      border-radius: 14px;
-      padding: 24px;
-      max-width: 400px;
-      width: 100%;
-    }
+/* MODAL RANKING */
+.modal-box {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
 
-    .ranking li {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-      font-weight: 600;
-    }
-  </style>
+.ranking li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-weight: 600;
+}
+</style>
 </head>
 
 <body>
@@ -188,7 +192,7 @@
 <div class="container" id="container"></div>
 
 <!-- MODAL IMAGEM -->
-<div class="modal" id="modalImgBox">
+<div class="modal" id="modalImagem">
   <img id="modalImg">
 </div>
 
@@ -201,96 +205,110 @@
 </div>
 
 <script>
-  const painel = document.getElementById("painelNumeros");
-  const container = document.getElementById("container");
-  const modalRanking = document.getElementById("modalRanking");
-  const listaRanking = document.getElementById("listaRanking");
+const painel = document.getElementById("painelNumeros");
+const container = document.getElementById("container");
+const modalImagem = document.getElementById("modalImagem");
+const modalImg = document.getElementById("modalImg");
+const modalRanking = document.getElementById("modalRanking");
+const listaRanking = document.getElementById("listaRanking");
 
-  /* PAINEL 1–60 */
-  for (let i = 1; i <= 60; i++) {
-    const n = document.createElement("div");
-    n.className = `numero n${i}`;
-    n.textContent = String(i).padStart(2, "0");
-    n.onclick = () => toggleNumero(i);
-    painel.appendChild(n);
-  }
+/* PAINEL 1–60 */
+for (let i = 1; i <= 60; i++) {
+  const n = document.createElement("div");
+  n.className = `numero n${i}`;
+  n.textContent = String(i).padStart(2, "0");
+  n.onclick = () => toggleNumero(i);
+  painel.appendChild(n);
+}
 
-  function toggleNumero(n) {
-    document.querySelectorAll(`.n${n}`).forEach(el =>
-      el.classList.toggle("ativo")
-    );
-    atualizarContagem();
-  }
+function toggleNumero(n) {
+  document.querySelectorAll(`.n${n}`).forEach(el =>
+    el.classList.toggle("ativo")
+  );
+  atualizarContagem();
+}
 
-  fetch("./dados.json")
-    .then(r => r.json())
-    .then(dados => render(dados));
+/* DADOS */
+fetch("./dados.json")
+  .then(r => r.json())
+  .then(dados => render(dados));
 
-  function render(dados) {
-    container.innerHTML = "";
+function render(dados) {
+  container.innerHTML = "";
 
-    dados.forEach(pessoa => {
-      const card = document.createElement("div");
-      card.className = "card";
+  dados.forEach(pessoa => {
+    const card = document.createElement("div");
+    card.className = "card";
 
-      card.innerHTML = `
-        <div class="card-header">
-          <div class="nome">${pessoa.nome}</div>
-          <button class="ver-jogo">Ver Jogo</button>
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="nome">${pessoa.nome}</div>
+        <button class="ver-jogo">Ver Jogo</button>
+      </div>
+    `;
+
+    card.querySelector(".ver-jogo").onclick = () => {
+      modalImg.src = `imagens/${pessoa.imagem}`;
+      modalImagem.classList.add("active");
+    };
+
+    pessoa.jogos.forEach((jogo, i) => {
+      const div = document.createElement("div");
+      div.className = "jogo";
+
+      div.innerHTML = `
+        <span>Jogo ${i + 1}
+          <span class="acertos-jogo">(0)</span>
+        </span>
+        <div class="numeros">
+          ${jogo.map(n => `
+            <div class="numero n${n}">
+              ${String(n).padStart(2, "0")}
+            </div>
+          `).join("")}
         </div>
       `;
 
-      pessoa.jogos.forEach((jogo, i) => {
-        const div = document.createElement("div");
-        div.className = "jogo";
-
-        div.innerHTML = `
-          <span>Jogo ${i + 1}
-            <span class="acertos-jogo">(0)</span>
-          </span>
-          <div class="numeros">
-            ${jogo.map(n => `
-              <div class="numero n${n}">
-                ${String(n).padStart(2, "0")}
-              </div>
-            `).join("")}
-          </div>
-        `;
-
-        card.appendChild(div);
-      });
-
-      container.appendChild(card);
-    });
-  }
-
-  function atualizarContagem() {
-    document.querySelectorAll(".jogo").forEach(jogo => {
-      const total = jogo.querySelectorAll(".numero.ativo").length;
-      jogo.querySelector(".acertos-jogo").textContent = `(${total})`;
-    });
-  }
-
-  /* RANKING */
-  function gerarRanking() {
-    const ranking = [];
-
-    document.querySelectorAll(".card").forEach(card => {
-      const nome = card.querySelector(".nome").textContent;
-      const total = card.querySelectorAll(".numero.ativo").length;
-      ranking.push({ nome, total });
+      card.appendChild(div);
     });
 
-    ranking.sort((a, b) => b.total - a.total);
+    container.appendChild(card);
+  });
+}
 
-    listaRanking.innerHTML = ranking
-      .map(r => `<li><span>${r.nome}</span><span>${r.total}</span></li>`)
-      .join("");
+function atualizarContagem() {
+  document.querySelectorAll(".jogo").forEach(jogo => {
+    const total = jogo.querySelectorAll(".numero.ativo").length;
+    jogo.querySelector(".acertos-jogo").textContent = `(${total})`;
+  });
+}
 
-    modalRanking.classList.add("active");
-  }
+/* RANKING */
+function gerarRanking() {
+  const ranking = [];
 
-  modalRanking.onclick = () => modalRanking.classList.remove("active");
+  document.querySelectorAll(".card").forEach(card => {
+    const nome = card.querySelector(".nome").textContent;
+    const total = card.querySelectorAll(".numero.ativo").length;
+    ranking.push({ nome, total });
+  });
+
+  ranking.sort((a, b) => b.total - a.total);
+
+  listaRanking.innerHTML = ranking
+    .map(r => `<li><span>${r.nome}</span><span>${r.total}</span></li>`)
+    .join("");
+
+  modalRanking.classList.add("active");
+}
+
+/* FECHAR MODAIS */
+modalImagem.onclick = () => {
+  modalImagem.classList.remove("active");
+  modalImg.src = "";
+};
+
+modalRanking.onclick = () => modalRanking.classList.remove("active");
 </script>
 
 </body>
