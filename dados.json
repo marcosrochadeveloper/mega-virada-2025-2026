@@ -52,7 +52,88 @@
       [4, 10, 24, 29, 35, 56]
     ]
 },
+
+{
+    "nome": "Guto",
+    "imagem": "guto.jfif",
+    "jogos": [
+      [5, 10, 33, 34, 41, 58],
+      [1, 17, 20, 36, 46, 50]
+    ]
+},
+
+{
+    "nome": "James",
+    "imagem": "james.jfif",
+    "jogos": [
+      [10, 12, 15, 23, 40, 55],
+      [3, 5, 18, 25, 35, 40]
+    ]
+},
+
+{
+    "nome": "Jani",
+    "imagem": "jani.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
+
+{
+    "nome": "Jatison",
+    "imagem": "jatison.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
+
+{
+    "nome": "Jean",
+    "imagem": "jean.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
   
+{
+    "nome": "Jeanyson",
+    "imagem": "jeanyson.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
+    
+{
+    "nome": "João Maria",
+    "imagem": "joaoMaria.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
+      
+{
+    "nome": "Juliana",
+    "imagem": "juliana.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
+
+{
+    "nome": "Junior",
+    "imagem": "junior.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
+    
 {
     "nome": "Marcos",
     "imagem": "marcos.jfif",
@@ -61,6 +142,69 @@
       [18, 19, 22, 36, 43, 45]
     ]
 }
+    
+{
+    "nome": "Maria Eduarda",
+    "imagem": "mariaEduarda.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
+    
+{
+    "nome": "Marileide",
+    "imagem": "marileide.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
+    
+{
+    "nome": "Mateus",
+    "imagem": "mateus.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
+    
+{
+    "nome": "Oseildo",
+    "imagem": "oseildo.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
+    
+{
+    "nome": "Jani",
+    "imagem": "jani.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
+    
+{
+    "nome": "Jani",
+    "imagem": "jani.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
+    
+{
+    "nome": "Jani",
+    "imagem": "jani.jfif",
+    "jogos": [
+      [],
+      []
+    ]
+},
 
 
 ]
