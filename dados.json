@@ -75,8 +75,8 @@
     "nome": "Jani",
     "imagem": "jani.jfif",
     "jogos": [
-      [],
-      []
+      [1, 7 , 10, 15, 30, 37],
+      [1, 13, 19, 20, 29, 45]
     ]
 },
 
@@ -84,8 +84,8 @@
     "nome": "Jatison",
     "imagem": "jatison.jfif",
     "jogos": [
-      [],
-      []
+      [10, 12, 24, 26, 48, 52],
+      [4, 16, 22, 47, 49, 54]
     ]
 },
 
@@ -93,8 +93,8 @@
     "nome": "Jean",
     "imagem": "jean.jfif",
     "jogos": [
-      [],
-      []
+      [5, 18, 20, 22, 33, 57],
+      [7, 12, 13, 23, 25, 40]
     ]
 },
   
@@ -102,8 +102,8 @@
     "nome": "Jeanyson",
     "imagem": "jeanyson.jfif",
     "jogos": [
-      [],
-      []
+      [14, 18, 26, 36, 54, 60],
+      [12, 18, 36, 41, 50, 57]
     ]
 },
     
@@ -111,8 +111,8 @@
     "nome": "João Maria",
     "imagem": "joaoMaria.jfif",
     "jogos": [
-      [],
-      []
+      [1, 2, 3, 4, 6, 9],
+      [1, 8, 34, 40, 55, 60]
     ]
 },
       
@@ -120,8 +120,8 @@
     "nome": "Juliana",
     "imagem": "juliana.jfif",
     "jogos": [
-      [],
-      []
+      [1, 3, 12, 26, 30, 55],
+      [2, 8, 9, 22, 24, 29]
     ]
 },
 
@@ -129,8 +129,8 @@
     "nome": "Junior",
     "imagem": "junior.jfif",
     "jogos": [
-      [],
-      []
+      [6, 30, 34, 46, 50, 58],
+      [1, 24, 25, 28, 32, 40]
     ]
 },
     
@@ -147,8 +147,8 @@
     "nome": "Maria Eduarda",
     "imagem": "mariaEduarda.jfif",
     "jogos": [
-      [],
-      []
+      [1, 23, 27, 45, 49, 51],
+      [14, 19, 31, 37, 45, 60]
     ]
 },
     
@@ -156,8 +156,8 @@
     "nome": "Marileide",
     "imagem": "marileide.jfif",
     "jogos": [
-      [],
-      []
+      [5, 18, 21, 37, 53, 59],
+      [3, 15, 38, 39, 51, 60]
     ]
 },
     
@@ -165,8 +165,8 @@
     "nome": "Mateus",
     "imagem": "mateus.jfif",
     "jogos": [
-      [],
-      []
+      [3, 5, 10, 20, 31, 33],
+      [5, 10, 33, 34, 37, 53]
     ]
 },
     
@@ -174,35 +174,35 @@
     "nome": "Oseildo",
     "imagem": "oseildo.jfif",
     "jogos": [
-      [],
-      []
+      [1, 4, 7, 8, 22, 35],
+      [10, 14, 43, 45, 48, 55]
     ]
 },
     
 {
-    "nome": "Jani",
-    "imagem": "jani.jfif",
+    "nome": "Paulo",
+    "imagem": "paulo.jfif",
     "jogos": [
-      [],
-      []
+      [14, 16, 31, 37, 51, 57],
+      [17, 22, 27, 44, 48, 57]
     ]
 },
     
 {
-    "nome": "Jani",
-    "imagem": "jani.jfif",
+    "nome": "Val",
+    "imagem": "val.jfif",
     "jogos": [
-      [],
-      []
+      [5, 10, 23, 33, 37, 53],
+      [3, 7, 13, 16, 20, 33]
     ]
 },
     
 {
-    "nome": "Jani",
-    "imagem": "jani.jfif",
+    "nome": "Ysmael",
+    "imagem": "ysmael.jfif",
     "jogos": [
-      [],
-      []
+      [4, 6, 12, 27, 33, 45],
+      [7, 10, 23, 46, 51, 60]
     ]
 },
 
