@@ -23,7 +23,7 @@
       margin-bottom: 20px;
     }
 
-    /* PAINEL */
+    /* PAINEL DE NÚMEROS */
     .painel-numeros {
       max-width: 1200px;
       margin: 0 auto 40px;
@@ -51,7 +51,7 @@
       background: #ccc;
     }
 
-    /* CARDS */
+    /* CONTAINER */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -74,19 +74,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
     }
 
     .nome {
       font-size: 1.3rem;
       font-weight: 600;
-    }
-
-    .acertos {
-      font-size: 0.9rem;
-      font-weight: bold;
-      color: #27ae60;
-      margin-left: 6px;
     }
 
     .ver-jogo {
@@ -102,9 +94,20 @@
 
     .jogo {
       display: grid;
-      grid-template-columns: 70px 1fr;
+      grid-template-columns: 100px 1fr;
       align-items: center;
       gap: 16px;
+    }
+
+    .jogo span {
+      font-weight: 600;
+      color: #555;
+    }
+
+    .acertos-jogo {
+      margin-left: 6px;
+      color: #27ae60;
+      font-weight: bold;
     }
 
     .numeros {
@@ -159,9 +162,13 @@
 
 <h1>Jogos do Grupo 🎲</h1>
 
+<!-- PAINEL 1–60 -->
 <div class="painel-numeros" id="painelNumeros"></div>
+
+<!-- CARDS -->
 <div class="container" id="container"></div>
 
+<!-- MODAL -->
 <div class="modal" id="modal">
   <img id="modalImg">
 </div>
@@ -172,13 +179,13 @@
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modalImg");
 
-  /* PAINEL 1–60 */
+  /* CRIA PAINEL DE 1 A 60 */
   for (let i = 1; i <= 60; i++) {
-    const n = document.createElement("div");
-    n.className = `numero n${i}`;
-    n.textContent = String(i).padStart(2, "0");
-    n.onclick = () => toggleNumero(i);
-    painel.appendChild(n);
+    const num = document.createElement("div");
+    num.className = `numero n${i}`;
+    num.textContent = String(i).padStart(2, "0");
+    num.onclick = () => toggleNumero(i);
+    painel.appendChild(num);
   }
 
   function toggleNumero(n) {
@@ -188,9 +195,9 @@
     atualizarContagem();
   }
 
-  /* DADOS */
+  /* CARREGA DADOS */
   fetch("./dados.json")
-    .then(r => r.json())
+    .then(res => res.json())
     .then(dados => render(dados));
 
   function render(dados) {
@@ -202,10 +209,7 @@
 
       card.innerHTML = `
         <div class="card-header">
-          <div class="nome">
-            ${pessoa.nome}
-            <span class="acertos">(0)</span>
-          </div>
+          <div class="nome">${pessoa.nome}</div>
           <button class="ver-jogo">Ver Jogo</button>
         </div>
       `;
@@ -216,11 +220,14 @@
       };
 
       pessoa.jogos.forEach((jogo, i) => {
-        const div = document.createElement("div");
-        div.className = "jogo";
+        const jogoDiv = document.createElement("div");
+        jogoDiv.className = "jogo";
 
-        div.innerHTML = `
-          <span>Jogo ${i + 1}</span>
+        jogoDiv.innerHTML = `
+          <span>
+            Jogo ${i + 1}
+            <span class="acertos-jogo">(0)</span>
+          </span>
           <div class="numeros">
             ${jogo.map(n => `
               <div class="numero n${n}">
@@ -230,17 +237,18 @@
           </div>
         `;
 
-        card.appendChild(div);
+        card.appendChild(jogoDiv);
       });
 
       container.appendChild(card);
     });
   }
 
+  /* CONTAGEM POR JOGO */
   function atualizarContagem() {
-    document.querySelectorAll(".card").forEach(card => {
-      const total = card.querySelectorAll(".numero.ativo").length;
-      card.querySelector(".acertos").textContent = `(${total})`;
+    document.querySelectorAll(".jogo").forEach(jogo => {
+      const total = jogo.querySelectorAll(".numero.ativo").length;
+      jogo.querySelector(".acertos-jogo").textContent = `(${total})`;
     });
   }
 
