@@ -20,10 +20,30 @@
     h1 {
       text-align: center;
       color: #fff;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
-    /* PAINEL DE NÚMEROS */
+    .acoes {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #f39c12, #e67e22);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 22px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    /* PAINEL */
     .painel-numeros {
       max-width: 1200px;
       margin: 0 auto 40px;
@@ -44,14 +64,9 @@
       justify-content: center;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.2s;
     }
 
-    .painel-numeros .numero:hover {
-      background: #ccc;
-    }
-
-    /* CONTAINER */
+    /* CARDS */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -72,8 +87,8 @@
 
     .card-header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
 
     .nome {
@@ -88,26 +103,21 @@
       padding: 8px 14px;
       border-radius: 20px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
     }
 
     .jogo {
       display: grid;
-      grid-template-columns: 100px 1fr;
+      grid-template-columns: 110px 1fr;
       align-items: center;
       gap: 16px;
     }
 
-    .jogo span {
-      font-weight: 600;
-      color: #555;
-    }
-
     .acertos-jogo {
-      margin-left: 6px;
       color: #27ae60;
       font-weight: bold;
+      margin-left: 6px;
     }
 
     .numeros {
@@ -126,7 +136,6 @@
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      transition: 0.2s;
     }
 
     .numero.ativo {
@@ -149,11 +158,20 @@
       display: flex;
     }
 
-    .modal img {
-      max-width: 100%;
-      max-height: 90vh;
-      border-radius: 12px;
+    .modal-box {
       background: #fff;
+      border-radius: 14px;
+      padding: 24px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .ranking li {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -162,42 +180,50 @@
 
 <h1>Jogos do Grupo 🎲</h1>
 
-<!-- PAINEL 1–60 -->
-<div class="painel-numeros" id="painelNumeros"></div>
+<div class="acoes">
+  <button class="btn" onclick="gerarRanking()">Gerar ranking 🏆</button>
+</div>
 
-<!-- CARDS -->
+<div class="painel-numeros" id="painelNumeros"></div>
 <div class="container" id="container"></div>
 
-<!-- MODAL -->
-<div class="modal" id="modal">
+<!-- MODAL IMAGEM -->
+<div class="modal" id="modalImgBox">
   <img id="modalImg">
+</div>
+
+<!-- MODAL RANKING -->
+<div class="modal" id="modalRanking">
+  <div class="modal-box">
+    <h2>🏆 Ranking</h2>
+    <ul class="ranking" id="listaRanking"></ul>
+  </div>
 </div>
 
 <script>
   const painel = document.getElementById("painelNumeros");
   const container = document.getElementById("container");
-  const modal = document.getElementById("modal");
-  const modalImg = document.getElementById("modalImg");
+  const modalRanking = document.getElementById("modalRanking");
+  const listaRanking = document.getElementById("listaRanking");
 
-  /* CRIA PAINEL DE 1 A 60 */
+  /* PAINEL 1–60 */
   for (let i = 1; i <= 60; i++) {
-    const num = document.createElement("div");
-    num.className = `numero n${i}`;
-    num.textContent = String(i).padStart(2, "0");
-    num.onclick = () => toggleNumero(i);
-    painel.appendChild(num);
+    const n = document.createElement("div");
+    n.className = `numero n${i}`;
+    n.textContent = String(i).padStart(2, "0");
+    n.onclick = () => toggleNumero(i);
+    painel.appendChild(n);
   }
 
   function toggleNumero(n) {
-    document.querySelectorAll(`.n${n}`).forEach(el => {
-      el.classList.toggle("ativo");
-    });
+    document.querySelectorAll(`.n${n}`).forEach(el =>
+      el.classList.toggle("ativo")
+    );
     atualizarContagem();
   }
 
-  /* CARREGA DADOS */
   fetch("./dados.json")
-    .then(res => res.json())
+    .then(r => r.json())
     .then(dados => render(dados));
 
   function render(dados) {
@@ -214,18 +240,12 @@
         </div>
       `;
 
-      card.querySelector(".ver-jogo").onclick = () => {
-        modalImg.src = `imagens/${pessoa.imagem}`;
-        modal.classList.add("active");
-      };
-
       pessoa.jogos.forEach((jogo, i) => {
-        const jogoDiv = document.createElement("div");
-        jogoDiv.className = "jogo";
+        const div = document.createElement("div");
+        div.className = "jogo";
 
-        jogoDiv.innerHTML = `
-          <span>
-            Jogo ${i + 1}
+        div.innerHTML = `
+          <span>Jogo ${i + 1}
             <span class="acertos-jogo">(0)</span>
           </span>
           <div class="numeros">
@@ -237,14 +257,13 @@
           </div>
         `;
 
-        card.appendChild(jogoDiv);
+        card.appendChild(div);
       });
 
       container.appendChild(card);
     });
   }
 
-  /* CONTAGEM POR JOGO */
   function atualizarContagem() {
     document.querySelectorAll(".jogo").forEach(jogo => {
       const total = jogo.querySelectorAll(".numero.ativo").length;
@@ -252,10 +271,26 @@
     });
   }
 
-  modal.onclick = () => {
-    modal.classList.remove("active");
-    modalImg.src = "";
-  };
+  /* RANKING */
+  function gerarRanking() {
+    const ranking = [];
+
+    document.querySelectorAll(".card").forEach(card => {
+      const nome = card.querySelector(".nome").textContent;
+      const total = card.querySelectorAll(".numero.ativo").length;
+      ranking.push({ nome, total });
+    });
+
+    ranking.sort((a, b) => b.total - a.total);
+
+    listaRanking.innerHTML = ranking
+      .map(r => `<li><span>${r.nome}</span><span>${r.total}</span></li>`)
+      .join("");
+
+    modalRanking.classList.add("active");
+  }
+
+  modalRanking.onclick = () => modalRanking.classList.remove("active");
 </script>
 
 </body>
